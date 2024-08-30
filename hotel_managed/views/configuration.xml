@@ -1,0 +1,143 @@
+<odoo>
+
+    <!-- FLOOR -->
+    <record id="view_configuration_floor_tree" model="ir.ui.view">
+        <field name="name">configuration.floor.tree</field>
+        <field name="model">configuration.floor</field>
+        <field name="arch" type="xml">
+            <tree string="Floor" editable="bottom">
+                <field name="name" />
+                <field name="manager" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- SERVICE -->
+    <record id="view_configuration_service_tree" model="ir.ui.view">
+        <field name="name">configuration.service.tree</field>
+        <field name="model">configuration.service</field>
+        <field name="arch" type="xml">
+            <tree string="Service" editable="bottom">
+                <field name="name" />
+                <field name="price" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- AMENITY -->
+    <record id="view_configuration_amenity_form" model="ir.ui.view">
+        <field name="name">configuration.amenity.form</field>
+        <field name="model">configuration.amenity</field>
+        <field name="arch" type="xml">
+            <form string="Amenity">
+                <sheet>
+                    <div class="row">
+                        <div class="col-md-9">
+                            <group>
+                                <field name="name" />
+                            </group>
+                        </div>
+                        <div class="col-md-3">
+                            <group>
+                                <field name="icon" widget="image" options="{'size': [200, 200]}" />
+                            </group>
+                        </div>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_configuration_amenity_tree" model="ir.ui.view">
+        <field name="name">configuration.amenity.tree</field>
+        <field name="model">configuration.amenity</field>
+        <field name="arch" type="xml">
+            <tree string="Amenity">
+                <field name="name" />
+                <field name="icon" widget="image" options="{'size': [200, 200]}" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- ROOM -->
+    <record id="view_configuration_room_form" model="ir.ui.view">
+        <field name="name">configuration.room.form</field>
+        <field name="model">configuration.room</field>
+        <field name="arch" type="xml">
+            <form string="Room">
+                <header>
+                    <field name="state" widget="statusbar"
+                        statusbar_visible="available,reserved,occupied" />
+                </header>
+                <sheet>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <group>
+                                <field name="name" />
+                            </group>
+                        </div>
+                        <div class="col-md-6">
+                            <group>
+                                <field name="icon" widget="image" options="{'size': [200, 200]}" />
+                            </group>
+                        </div>
+                    </div>
+
+                    <notebook>
+                        <!-- Tab Information -->
+                        <page string="Information">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <group>
+                                        <field name="floor_id" />
+                                        <field name="manager_id" />
+                                    </group>
+                                </div>
+                                <div class="col-md-6">
+                                    <group>
+                                        <field name="room_type" />
+                                        <field name="rent" />
+                                        <field name="persons" />
+                                        <field name="cost" />
+                                    </group>
+                                </div>
+                            </div>
+                        </page>
+
+                        <!-- Tab Amenity -->
+                        <page string="Amenity">
+                            <group>
+                                <field name="amenity_ids" context="{'default_room_id': active_id}">
+                                    <tree editable="bottom">
+                                        <field name="name" />
+                                        <field name="quantity" />
+                                        <field name="price" />
+                                        <field name="subtotal" />
+                                    </tree>
+                                </field>                            
+                            </group>
+                        </page>
+
+                        <!-- Tab Description -->
+                        <page string="Description">
+                            <group>
+                                <field name="description" />
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_configuration_room_tree" model="ir.ui.view">
+        <field name="name">configuration.room.tree</field>
+        <field name="model">configuration.room</field>
+        <field name="arch" type="xml">
+            <tree string="Room">
+                <field name="name" />
+                <field name="icon" widget="image" options="{'size': [200, 200]}" />
+            </tree>
+        </field>
+    </record>
+</odoo>

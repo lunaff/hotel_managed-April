@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_configuration_floor,access.configuration.floor,model_configuration_floor,,1,1,1,1
+access_configuration_service,access.configuration.service,model_configuration_service,,1,1,1,1
+access_configuration_amenity,access.configuration.amenity,model_configuration_amenity,,1,1,1,1
+access_configuration_room,access.configuration.room,model_configuration_room,,1,1,1,1
+access_reporting_reporting,access.reporting.reporting,model_reporting_reporting,,1,1,1,1
+access_reservation_reservation,access.reservation.reservation,model_reservation_reservation,,1,1,1,1

@@ -1,0 +1,11 @@
+<odoo>
+    
+    <record id="action_report_pdf_template" model="ir.actions.report">
+        <field name="name">Booking Room Report</field>
+        <field name="model">reporting.reporting</field>
+        <field name="report_name">hotel_managed.report_pdf_template</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="binding_model_id" ref="model_reporting_reporting" />
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

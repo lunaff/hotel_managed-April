@@ -1,0 +1,37 @@
+<odoo>
+    <template id="report_pdf_template">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <t t-if="docs">
+                    <div class="page">
+                        <h2>Room Booking Report</h2>
+                        <table class="table table-sm" style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+                            <thead>
+                                <tr style="background-color: #d3d3d3; border: 1px solid #000;">
+                                    <th style="padding: 8px; border: 1px solid #000;">No</th>
+                                    <th style="padding: 8px; border: 1px solid #000;">Guest Name</th>
+                                    <th style="padding: 8px; border: 1px solid #000;">Room</th>
+                                    <th style="padding: 8px; border: 1px solid #000;">Check In</th>
+                                    <th style="padding: 8px; border: 1px solid #000;">Check Out</th>
+                                    <th style="padding: 8px; border: 1px solid #000;">Reservation Reference</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="docs" t-as="doc">
+                                    <tr style="border: 1px solid #000;">
+                                        <td style="padding: 8px; border: 1px solid #000;"><span t-esc="doc.id"/></td>
+                                        <td style="padding: 8px; border: 1px solid #000;"><span t-field="doc.reservation_id.customer.name"/></td>
+                                        <td style="padding: 8px; border: 1px solid #000;"><span t-field="doc.room_id.name"/></td>
+                                        <td style="padding: 8px; border: 1px solid #000;"><span t-field="doc.check_in"/></td>
+                                        <td style="padding: 8px; border: 1px solid #000;"><span t-field="doc.check_out"/></td>
+                                        <td style="padding: 8px; border: 1px solid #000;"><span t-field="doc.reservation_id.name"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

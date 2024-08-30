@@ -1,0 +1,132 @@
+<odoo>
+
+    <record id="view_reservation_form" model="ir.ui.view">
+        <field name="name">reservation.form</field>
+        <field name="model">reservation.reservation</field>
+        <field name="arch" type="xml">
+            <form string="Reservation">
+                <header>
+                    <field name="state" widget="statusbar"
+                        statusbar_visible="draft,check_in,check_out,done" />
+                    <!-- Action Buttons Based on State -->
+                    <button name="action_check_in" type="object" string="Check In"
+                        class="btn-primary" />
+                    <button name="action_check_out" type="object" string="Check Out"
+                        class="btn-primary" />
+                    <button name="action_done" type="object" string="Done" class="btn-primary" />
+                    <button name="action_create_invoice" type="object" string="Create invoice"
+                        class="btn-primary" />
+                </header>
+                <sheet>
+                    <group>
+                        <h1>
+                            <field name="name" readonly="1" />
+                        </h1>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="customer" />
+                            <field name="invoice_address" />
+                        </group>
+
+                        <group>
+                            <field name="order_date" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Folio">
+                            <table class="table table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th>Room</th>
+                                        <th>Check In</th>
+                                        <th>Booking</th>
+                                        <th>Check Out</th>
+                                        <th>Durationt</th>
+                                        <th>Unit of Measure</th>
+                                        <th>Rent</th>
+                                        <th>Subtotal</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <field name="room_id" />
+                                        </td>
+                                        <td>
+                                            <field name="check_in" />
+                                        </td>
+                                        <td>
+                                            <field name="booking" />
+                                        </td>
+                                        <td>
+                                            <field name="check_out" />
+                                        </td>
+                                        <td>
+                                            <field name="duration" />
+                                        </td>
+                                        <td>
+                                            <field name="unit_of_measure" />
+                                        </td>
+                                        <td>
+                                            <field name="rent" />
+                                        </td>
+                                        <td>
+                                            <field name="subtotal" />
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="7" style="text-align: right;">
+                                            <h3>
+                                                Total 
+                                            </h3>
+                                        </td>
+                                        <td>
+                                            <h3>
+                                                <field name="total" />
+                                            </h3>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                            <group></group>
+                            <group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree View -->
+    <record id="view_reservation_tree" model="ir.ui.view">
+        <field name="name">reservation.tree</field>
+        <field name="model">reservation.reservation</field>
+        <field name="arch" type="xml">
+            <tree string="Reservation">
+                <field name="name" />
+                <field name="customer" />
+                <field name="invoice_address" />
+                <field name="order_date" />
+                <field name="state" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- Sequence Definition -->
+    <data noupdate="1">
+        <record id="seq_reservation" model="ir.sequence">
+            <field name="name">Reservation Sequence</field>
+            <field name="code">reservation.sequence</field>
+            <field name="prefix">BOOKING/</field>
+            <field name="padding">5</field>
+            <field name="number_next_actual">1</field>
+            <field name="number_increment">1</field>
+            <field name="implementation">no_gap</field>
+        </record>
+    </data>
+
+</odoo>
